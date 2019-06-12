@@ -49,6 +49,23 @@ client.on("message", async message => {
         .setFooter(`Athisum`, `${message.client.user.avatarURL}`)
         message.channel.send(embed) .catch(err => message.channel.send(`**<:error:588492643063955470>Um erro aconteceu!**\n**${errorblock}js\n${err}${errorblock}**`))
     }
+
+    if(message.content.startsWith(prefix + 'avatar')) {
+        let aTaged = message.mentions.users.first() || message.author;
+        const embed = new Discord.RichEmbed()
+        .setTitle(`**Avatar**`)
+        .setColor(`#bc42f4`)
+        .setDescription(`Clique [aqui](${aTaged.displayAvatarURL}) para abrir a imagem!`)
+        .setImage(`${aTaged.displayAvatarURL}`)
+        .setFooter(`Athisum`, `${message.client.user.avatarURL}`)
+        message.channel.send(embed) .catch(err => message.channel.send(`**<:error:588492643063955470>Um erro aconteceu!**\n**${errorblock}js\n${err}${errorblock}**`))
+    
+    }
+
+
+
+
+
 })
 
-client.login(`${config.token}`); 
+client.login(`${config.token}`);
