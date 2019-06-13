@@ -62,6 +62,19 @@ client.on("message", async message => {
     
     }
 
+    if(message.content.startsWith(prefix + 'botinfo')) {
+        const m = await message.channel.send(`Calculando a Latencia!`)
+        const embed = new Discord.RichEmbed()
+        .setTitle(`**Bot Info**`)
+        .setColor(`#bc42f4`)
+        .addField(`**<:command:588857294192902164>Prefixo**`, `**${block}a!${block}**`, true)
+        .addField(`**<:script:588857304468815872>API**`, `**Discord.js**`, true)
+        .addField(`**<:server:588856726149922830>Latencia**`, `Latência do bot: **${block}${m.createdTimestamp - message.createdTimestamp}ms${block}**\nLatência da API: **${block}${Math.round(client.ping)}ms${block}**`, true)
+        .addField(`**<:people:588502135185080335>Dono**`, `**Pototo#3920**`, true)
+        .addField(`**<:links:588860839373701126>Links**`, `[Link do bot!](https://discordapp.com/api/oauth2/authorize?client_id=585985830179307549&permissions=8&scope=bot)\n[GitHub](https://github.com/Mpototo/Athisum)`, true)
+        .setFooter(`Athisum`, `${message.client.user.avatarURL}`)
+        m.edit(embed) .catch(err => message.channel.send(`**<:error:588492643063955470>Um erro aconteceu!**\n**${errorblock}js\n${err}${errorblock}**`))
+    }
 
 
 
